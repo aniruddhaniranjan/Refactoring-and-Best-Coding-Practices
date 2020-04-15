@@ -1,0 +1,19 @@
+Even if a program works and is ugly or poorly written it must be refactored. Although the compiler doesn't care about well-written code or clean code, a poorly designed system is hard to change. It is hard to decide where to make the changes and therefore chances of making mistakes and introducing bugs is high.
+Sometimes small changes in behaviour - such as change in format of what is returned from a method - will need us to potentially copy the logic and add a duplicate method. This is not time consuming for a small method but duplicate methods are hard to maintain. But when the logic needs to be changed later, we need to change both methods to ensure the fixes are consistent. If we are writing code that won't be changed then copy-and-paste is fine. But not if the program is long lived and needs to be changed. Whatever the new logic or the change in data structures might be, the only guarantee is that it will need to be modified in the next few months. As the logic becomes more and more complicated, the harder it becomes to figure out where to make the changes - and harder it is to make these changes without introducing bugs.
+
+** When you find you have to add a feature to a program, and the program's code is not structured in a convenient way to add the feature, first refactor the program to make it easy to add the feature, then add the feature. **
+
+First step in Refactoring
+As we do the refactoring, we will lean on the tests. I'm going to be relying on the tests to tell me whether I introduce a bug. It is essential for refactoring that you have good tests. It's worth spending the time to build the tests, because the tests give you the security you need to change the program later.
+** Before you start refactoring, check that you have a solid suite of tests. These tests must be self-checking **
+
+Decomposing and Redistributing Code
+Long methods must be decomposed into smaller pieces - such code tend to make things manageable (easier to work with and move around). Code in long methods can be moved/extracted to different classes.
+** Refactoring should change the code in small steps. If you make any mistakes, it should be detected easily and quickly. **
+
+Renaming of variables and method names is worth the effort - code should communicate what it is doing clearly, and variable names are a key to clear code. Never be afraid to change the names of things to improve clarity. With good find and replace tools, it is usually not difficult. Strong typing and testing will highlight anything you miss. One can refactor code as they read it - in order to embed the understanding of the program for later use.
+** It's easy to write code that a computer can understand. Good programmers write code that humans can understand. **
+
+In some cases, a method doesn't use the information from the class it is in. Hence, it is in the wrong class. It should be moved to the right class - the class whose information the method is actually using. Copy the code, adjust it to fit in the new class and compile. Fitting into new class might involve changing parameters, method names. NEXT STEP IS - FIND EVERY REFERENCE TO THE OLD METHOD AND ADJUST THE REFERENCE TO USE THE NEW METHOD. Do a find across all classes to get the references.
+Further, the old method can be removed - both compiler should tell if there's something wrong and we should test to see if anything is broken. Sometimes, the old method is retained to delegate to the new method - this is useful if the old method is public and we don't want to change the interface of the class which has the old method.
+
