@@ -1,1 +1,13 @@
+One strategy to not use is the “Big Bang” rewrite. That is when you focus all of your development efforts on building a new microservices‑based application from scratch. Although it sounds appealing, it is extremely risky and will likely end in failure.
 
+Strategy 1 – Stop Digging
+In other words, you should stop making the monolith bigger. This means that when you are implementing new functionality you should not add more code to the monolith. Instead, the big idea with this strategy is to put that new code in a standalone microservice.
+
+There is a request router, which handles incoming (HTTP) requests. It is similar to the API gateway. The router sends requests corresponding to new functionality to the new service and legacy requests to the monolith.
+
+There is glue code which integrates service with monolith. It could reside in monolith, service or both and performs read/write of data, from monolith, which service needs. For accessing data the glue code can - a. Invoke remote API on the monolith, access DB directly or maintain its own copy of the data and sync with monolith DB. Glue code is sometimes called anti-corruption layer as it prevents service's new domain model from being corrupted by monolith's old domain model. It translates between the two models. Writing this is not trivial.
+
+Benefits - a. Prevents the monolith from becoming even more unmanageable. b. The service can be developed, deployed, and scaled independently of the monolith
+Drawback - Doesn't address issues within monolith
+
+Strategy 2 - Split frontend and backend
