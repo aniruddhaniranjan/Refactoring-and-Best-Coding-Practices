@@ -11,3 +11,8 @@ Benefits - a. Prevents the monolith from becoming even more unmanageable. b. The
 Drawback - Doesn't address issues within monolith
 
 Strategy 2 - Split frontend and backend
+Split the presentation layer from business-logic and data access layers. Presentation layer - components that handle HTTP requests and implement either HTML based UI or REST APIs. Business Logic - Components at core of application and implement business rules. Data access layer - Components that access infrastructure components such as databases and message brokers
+Business tier has coarse-grained APIs consisting of one or more facades, which encapsulates business-logic into components. This is a natural place to split monolith into 2 apps - presentation and business-logic/data-access. After splitting, presentation logic makes remote calls to business-logic components.
+Benefits - Develop, deploy and scale independently. In particular, it allows UI developers to iterate quickly and perform A/B testing. Another is it exposes new remote APIs in business logic which can be called by new microservices being developed.
+
+Strategy 3 - Extract services
