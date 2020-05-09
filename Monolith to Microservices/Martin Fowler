@@ -1,1 +1,5 @@
+We've learned that to do this well, we need to start with a simple service, but then draw out services that are based on vertical capabilities that are important to the business and subject to frequent change. These services should be large at first and preferably not dependent upon the remaining monolith.
+Objectives - want to grow their number of teams while enabling them to deliver value in parallel and independently of each other. They want to rapidly experiment with their business's core capabilities and deliver value faster. They also want to escape the high cost associated with making changes to their existing monolithic systems.
 
+Microservices Architecture
+Microservices encapsulate business capability - what a business does in a particular domain to fulfill its objectives and responsibilities. Microservice expose an API that developers can discover and use in a self-serve manner. The microservices ecosystem enforces an organizational structure of autonomous long standing teams, each responsible for one or multiple services. Size of each service matters least and may vary depending on the operational maturity of the organization.
