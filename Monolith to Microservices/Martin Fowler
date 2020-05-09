@@ -3,3 +3,18 @@ Objectives - want to grow their number of teams while enabling them to deliver v
 
 Microservices Architecture
 Microservices encapsulate business capability - what a business does in a particular domain to fulfill its objectives and responsibilities. Microservice expose an API that developers can discover and use in a self-serve manner. The microservices ecosystem enforces an organizational structure of autonomous long standing teams, each responsible for one or multiple services. Size of each service matters least and may vary depending on the operational maturity of the organization.
+
+Advantages:
+- Independent services increases speed of experimentation
+- Ecosystem enables innovation through composing services
+- Small and independent services lowers cognitive load
+- Ecosystem enables growth and scale of operations
+- Services have independent lifecycle
+- Services can be build with diverse set of technologies
+- Long standing autonomous teams responsible for different services
+
+1. Starting with a simple service to decouple:
+Before starting with microservices, we need developers and operation teams to build out the underlying infrastructure, access to deployment environment, continuous delivery pipelines and the API management system with the first and second service that they decompose or build new. Start with capabilities that are fairly decoupled from the monolith, they don’t require changes to many client facing applications that are currently using the monolith and possibly don’t need a data store. For an online retail application, the first service can be the ‘end user authentication’ service that the monolith could call to authenticate the end users.
+First recommended decoupling simple edge services. Next we take a different approach decoupling capabilities deeply embedded in the monolithic system. I advise doing edge services first because at the beginning of the journey, the delivery teams' biggest risk is failing to operate the microservices properly. So it’s good to use the edge services to practice the operational prerequisites they need. Once they have addressed that, they can then address the key problem of splitting the monolith.
+
+2. Minimize Dependency Back to the Monolith
